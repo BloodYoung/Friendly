@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Friendly</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="et_hint">Your email is?</string>
+    <string name="btn_text">Next</string>
+    <string name="chats">Chats</string>
+    <string name="matches">Matches</string>
+    <string name="swipe">Swipe</string>
+    <string name="profile">Profile</string>
+    <string name="poke">Poke</string>
+    <string name="temp">Gamer Chick Hitting Restart and Looking for a High Score in Co-Op Mode Gamer</string>
+</resources>

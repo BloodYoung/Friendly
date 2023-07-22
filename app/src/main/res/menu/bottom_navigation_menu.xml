@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/account"
+    android:title="@string/profile"
+    android:icon="@drawable/account_24"
+    android:enabled="true">
+    </item>
+
+    <item android:id="@+id/swipe"
+        android:title="@string/swipe"
+        android:icon="@drawable/swipe_24"
+        android:enabled="true" >
+    </item>
+
+    <item android:id="@+id/match"
+        android:title="@string/matches"
+        android:icon="@drawable/like_24"
+        android:enabled="true" >
+    </item>
+
+    <item android:id="@+id/chats"
+        android:title="@string/chats"
+        android:icon="@drawable/chat_24"
+        android:enabled="true" >
+    </item>
+
+    <item android:id="@+id/poke"
+        android:title="@string/poke"
+        android:icon="@drawable/poke_24"
+        android:enabled="true" >
+    </item>
+</menu>
