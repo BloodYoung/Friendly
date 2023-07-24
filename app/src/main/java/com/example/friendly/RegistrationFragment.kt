@@ -13,32 +13,26 @@ import androidx.navigation.fragment.findNavController
 import com.example.friendly.Model.TokenManager
 import com.example.friendly.Model.User
 import com.example.friendly.databinding.FragmentRegistrationBinding
-import com.example.friendly.utils.Const.database
+import com.example.friendly.utils.Const
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 
 class RegistrationFragment : Fragment() {
     lateinit var binding: FragmentRegistrationBinding
-    lateinit var firebaseAuth: FirebaseAuth
     lateinit var tokenManager: TokenManager
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        firebaseAuth = FirebaseAuth.getInstance()
-    }
+    lateinit var firebaseAuth: FirebaseAuth
+    lateinit var firebaseDatabase: FirebaseDatabase
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentRegistrationBinding.inflate(inflater, container, false)
+        firebaseDatabase = FirebaseDatabase.getInstance(Const.FIREBASE_DATABASE_ADDRESS)
+        firebaseAuth = FirebaseAuth.getInstance()
         tokenManager = TokenManager(requireContext())
         val email = requireArguments().getString("email")
         if (email!!.isNotEmpty()){
-            Log.i("MYTAG", email)
             binding.emailRegistrationEt.isClickable = false
             binding.emailRegistrationEt.isFocusable = false
 
@@ -94,7 +88,7 @@ class RegistrationFragment : Fragment() {
                 genderEt.text.toString(),
                 ageEt.text.toString().toInt()
             )
-            database.child(firebaseAuth.currentUser!!.uid).setValue(user).addOnCompleteListener {
+            firebaseDatabase.getReference("Users").child(firebaseAuth.currentUser!!.uid).setValue(user).addOnCompleteListener {
                 if (it.isSuccessful){
                     Toast.makeText(requireContext(),"Registration Successful!", Toast.LENGTH_SHORT).show()
                 }
